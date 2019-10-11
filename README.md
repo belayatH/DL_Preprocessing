@@ -1,2 +1,2 @@
 # DL_Preprocessing
-This scripts for preprocessing of DL model
+Scripts repository for preprocessing of DL model
