@@ -105,9 +105,9 @@ if __name__ == '__main__':
 
     # ========================== Set directory/ file name here ======================
     # base directory where video, annotation file, image- are stored/to be stored
-    base_dir = "//QNAP3/data/j3tera3/working/Belayat/rawdata/handaction/ukavideos/"
-    label_file_name = "UKA_1_hand.txt"  # video file name
-    video_name = "UKA_2_hand.mp4"   # annotation file name
+    base_dir = "//HDD2/videos/"
+    label_file_name = "video_1_hand.txt"  # video file name
+    video_name = "video_1_hand.mp4"   # annotation file name
     class_file = "class.txt"
     # ===============================================================================
 
