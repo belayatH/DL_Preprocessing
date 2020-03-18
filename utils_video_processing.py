@@ -83,6 +83,8 @@ def make_dir(base_dir, video_name):
             # print(cl_name)
             new_sub_dir = os.path.join(img_dir, cl_name)
             os.mkdir(new_sub_dir)
+        extract_defined_frame_video(base_dir, label_file_name, video_name)
+        
     except:
         print("[INFO...:] Delete all class directory which are named by video name")
 
