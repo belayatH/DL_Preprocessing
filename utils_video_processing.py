@@ -1,9 +1,11 @@
 """
-Belayat, AMEC, U Hyogo, 17/3/2020
+Author- Belayat Hossain, 17/3/2020, Advanced Medical Engineering Center, U of Hyogo
 Purpose: fast processing of creating training data set from video
-Usage: To extract video frame by taking frame index from a label text file (accept YOLOv3-keras format only)
-        and export to class directory (cat, dog) based on class label
-
+Usage: To extract video frame by taking frame index and label from a annotation text file (accept YOLOv3-keras format)
+        and export to class directory (cat, dog) based on class label.
+        Annotation format, <frameIndex>,<integer>,<box-topleft1>,<box-topleft2>,<box-bottomright1>,<box-bottomright2>,<class_label>
+                           10,1,680,259,350,242,cat
+            
 Run: python utils_video_processing.py
 """
 
@@ -27,7 +29,7 @@ def write_text_file(base_dir, label_file_name, np_str_data):
             fp.write("\n")
 
 
-def extract_defined_frame_video(base_dir, label_file_name, video_name):
+def extract_defined_video_frame(base_dir, label_file_name, video_name):
     video_path = base_dir + video_name
     video_dir_name = video_name.split(".")[0]
     video_dir = os.path.join(base_dir, video_dir_name)
@@ -73,7 +75,6 @@ def make_dir(base_dir, video_name):
     # make directory (with class subdirectory) for each video file name
     video_dir_name = video_name.split(".")[0]
 
-    # """
     # using class file
     try:
         img_dir = os.path.join(base_dir, video_dir_name)
@@ -83,18 +84,17 @@ def make_dir(base_dir, video_name):
             # print(cl_name)
             new_sub_dir = os.path.join(img_dir, cl_name)
             os.mkdir(new_sub_dir)
-        extract_defined_frame_video(base_dir, label_file_name, video_name)
+        extract_defined_video_frame(base_dir, label_file_name, video_name)
         
     except:
-        print("[INFO...:] Delete all class directory which are named by video name")
+        print("[INFO...:] Delete all class directories which are named by video name")
 
-    # """
     """
     try:
         img_dir = os.path.join(base_dir, video_dir_name)
-        img_dir_subdir1 = os.path.join(img_dir, "hand")
-        img_dir_subdir2 = os.path.join(img_dir, "nohand")
-        img_dir_subdir3 = os.path.join(img_dir, "nonsurgery")
+        img_dir_subdir1 = os.path.join(img_dir, "cat")
+        img_dir_subdir2 = os.path.join(img_dir, "dog")
+        img_dir_subdir3 = os.path.join(img_dir, "rat")
         os.mkdir(img_dir), os.mkdir(img_dir_subdir1), os.mkdir(img_dir_subdir2), os.mkdir(img_dir_subdir3)
         extract_defined_frame_video(base_dir, label_file_name, video_name)
 
