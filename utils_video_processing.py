@@ -86,8 +86,8 @@ def make_dir(base_dir, video_name):
             os.mkdir(new_sub_dir)
         extract_defined_video_frame(base_dir, label_file_name, video_name)
         
-    except:
-        print("[INFO...:] Delete all class directories which are named by video name")
+    except ValueError:
+        raise ValueError("[INFO...:] Delete all class directories which are named by video name")
 
     """
     try:
