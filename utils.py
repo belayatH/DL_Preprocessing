@@ -46,7 +46,7 @@ def export_Plot_confusion_matrix(confusion_matrix, class_names, CM_type, figsize
         heatmap = sns.heatmap(df_cm, annot=True, fmt=fmt)
     except ValueError:
         # not raised an ValueError about datatype 
-        raise ValueError("Check confusion matrix data type which must be integers for not normalization.")
+        raise ValueError("Check confusion matrix data type which must be integers/float")
     
     heatmap.yaxis.set_ticklabels(heatmap.yaxis.get_ticklabels(), rotation=0, ha='right', fontsize=fontsize)
     heatmap.xaxis.set_ticklabels(heatmap.xaxis.get_ticklabels(), rotation=45, ha='right', fontsize=fontsize)
